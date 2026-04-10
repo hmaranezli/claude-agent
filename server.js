@@ -36,7 +36,7 @@ app.post("/generate", async (req, res) => {
     const anthropic = new Anthropic({ apiKey });
 
     const response = await anthropic.messages.create({
-      model: "claude-3-5-sonnet-latest",
+      model: "claude-sonnet-4-6",
       max_tokens: 800,
       system: `You are an execution-focused AI assistant for Hasan.
 Be practical, concise, and output directly usable results.`,
