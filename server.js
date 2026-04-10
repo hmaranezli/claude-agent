@@ -36,10 +36,10 @@ app.post("/generate", async (req, res) => {
     const anthropic = new Anthropic({ apiKey });
 
     const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-5",
+      model: "claude-3-5-sonnet-latest",
       max_tokens: 800,
-      system: \`You are an execution-focused AI assistant for Hasan.
-Be practical, concise, and output directly usable results.\`,
+      system: `You are an execution-focused AI assistant for Hasan.
+Be practical, concise, and output directly usable results.`,
       messages: [
         {
           role: "user",
@@ -51,7 +51,7 @@ Be practical, concise, and output directly usable results.\`,
     const text = response.content
       .filter((item) => item.type === "text")
       .map((item) => item.text)
-      .join("\\n");
+      .join("\n");
 
     res.json({
       ok: true,
@@ -67,5 +67,5 @@ Be practical, concise, and output directly usable results.\`,
 });
 
 app.listen(port, "0.0.0.0", () => {
-  console.log(\`claude-agent listening on port \${port}\`);
+  console.log(`claude-agent listening on port ${port}`);
 });
